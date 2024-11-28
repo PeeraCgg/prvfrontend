@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, ''); // ลบ process.cwd()
+  const env = loadEnv(mode, ''); // โหลด Environment Variables
 
   return {
     plugins: [react()],
@@ -15,6 +15,7 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       port: 5173, // ตั้งค่าพอร์ตสำหรับ development
+      historyApiFallback: true, // เพิ่ม Fallback Routing สำหรับ SPA
     },
     build: {
       outDir: 'dist', // กำหนดโฟลเดอร์ที่ใช้สำหรับ build
