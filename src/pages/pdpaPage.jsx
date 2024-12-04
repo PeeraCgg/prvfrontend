@@ -177,14 +177,46 @@ const PdpaPage = () => {
           {language === "TH" ? (
             <p className="text-sm text-[#525B44] leading-relaxed">
               {/* PDPA Content in English */}
+              **PDPA Agreement Content Here** Lorem ipsum dolor sit amet...
               **PDPA Agreement Content Here** Lorem ipsum dolor sit amet...lorem300
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores illo magni alias saepe, harum sit? Aut, natus? Libero temporibus, magnam, excepturi nobis nesciunt sit et porro accusantium aperiam repellat eum autem perspiciatis animi cumque provident optio veniam natus quisquam nihil debitis aliquam soluta nisi? Unde, odio dolorem! Consectetur perferendis ab nulla beatae veniam quas cum, iste dignissimos repellendus deserunt eaque, vitae dolorem repudiandae soluta voluptatem modi eos! Sequi debitis quia saepe fugit? Sint vitae quia quasi reiciendis nisi fugit reprehenderit nemo error, neque esse, ullam distinctio ipsum eligendi est! Praesentium sapiente commodi aut ad assumenda quasi non neque, libero quidem nihil maiores itaque accusamus expedita, impedit in consequuntur, perferendis maxime reprehenderit modi laboriosam nemo soluta totam ullam? Totam voluptates quod minima culpa nobis a quibusdam, modi ab earum possimus est accusantium, id placeat fugiat officiis ducimus quas nulla adipisci pariatur ipsum nam! Voluptatem facere temporibus, soluta nemo, eveniet voluptates optio dolore tempore natus quasi eum magnam sed. Saepe totam fuga tenetur est minus tempora optio? Eius dolore aspernatur aut minima obcaecati eveniet fuga mollitia voluptates magni, voluptate autem ipsum voluptatem. Distinctio magni voluptatem deleniti quod et, enim doloribus, voluptatibus mollitia tempora laboriosam aspernatur ipsa. Dolores deserunt earum accusamus officia minima maiores numquam sunt commodi, aperiam ratione cum soluta nemo recusandae incidunt repellat animi delectus impedit! Quaerat unde consequatur, nesciunt laborum nulla nobis labore? Dolorem debitis natus eaque quod quos quae modi officia, saepe cum omnis officiis, nulla sit. Adipisci velit reprehenderit excepturi vero natus minus numquam dolores corporis pariatur. Consectetur quidem quis nihil ad magnam eveniet maiores accusantium similique sit excepturi? Vitae minima animi earum, natus libero, nobis qui minus voluptate repellat reiciendis hic deleniti eaque veniam pariatur, tempore sapiente dolores corrupti architecto est quod facere. Fugit asperiores magnam, eveniet totam non maxime, mollitia alias itaque excepturi quam, quis accusamus?
-              
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores ill
+              **PDPA Agreement Content Here** Lorem ipsum dolor sit amet...lorem300
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores ill
+              **PDPA Agreement Content Here** Lorem ipsum dolor sit amet...lorem300
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores ill
+              **PDPA Agreement Content Here** Lorem ipsum dolor sit amet...lorem300
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores ill
+
+              **PDPA Agreement Content Here** Lorem ipsum dolor sit amet...lorem300
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores ill
+
+              **PDPA Agreement Content Here** Lorem ipsum dolor sit amet...lorem300
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores ill
+
+              **PDPA Agreement Content Here** Lorem ipsum dolor sit amet...lorem300
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores ill
             </p>
           ) : (
             <p className="text-sm text-[#525B44] leading-relaxed">
               {/* PDPA Content in Thai */}
               **PDPA Agreement Content Here** Lorem ipsum dolor sit amet...
+              **PDPA Agreement Content Here** Lorem ipsum dolor sit amet...lorem300
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores ill
+              **PDPA Agreement Content Here** Lorem ipsum dolor sit amet...lorem300
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores ill
+              **PDPA Agreement Content Here** Lorem ipsum dolor sit amet...lorem300
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores ill
+              **PDPA Agreement Content Here** Lorem ipsum dolor sit amet...lorem300
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores ill
+
+              **PDPA Agreement Content Here** Lorem ipsum dolor sit amet...lorem300
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores ill
+
+              **PDPA Agreement Content Here** Lorem ipsum dolor sit amet...lorem300
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores ill
+
+              **PDPA Agreement Content Here** Lorem ipsum dolor sit amet...lorem300
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores ill
             </p>
           )}
         </div>

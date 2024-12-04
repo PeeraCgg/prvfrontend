@@ -12,6 +12,8 @@ import ViewRewardPage from "./pages/viewRewardPage";
 import RedeemedHistoryPage from "./pages/historyProductPage";
 import AllRewardsPage from "./pages/allrewardPage";
 import VerifyOtpPage from "./pages/mobileVerify";
+import ExchangeDemos from "./pages/exchangeDemo";
+import  HistoryExchange from "./pages/historyExchangePage"
 function App() {
  
     return(  
@@ -30,7 +32,8 @@ function App() {
       <Route path="/viewreward" element={< ViewRewardPage />} />
       <Route path="/redeemedhistory" element={< RedeemedHistoryPage />} />
       <Route path="/allreward" element={< AllRewardsPage />} />
-     
+      <Route path="/exchangeDemo" element={<ExchangeDemos />} />
+      <Route path="/historyExchange" element={<HistoryExchange />} />
     </Routes>
     )};
  
