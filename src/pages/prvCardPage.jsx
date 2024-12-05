@@ -204,23 +204,38 @@ const ProfilePage = () => {
             </>
           ) : (
             <>
-             {/* Back Side */}
-<div className="flex flex-col items-center justify-center h-full">
+{/* Back Side */}
+<div className="flex flex-col items-start justify-center h-full px-4">
   {/* QR Code */}
   <img
     src="https://cheechangolf.com/wp-content/uploads/2020/01/M.png"
     alt="QR Code"
-    className="w-24 h-24 object-contain mb-4"
+    className="w-24 h-24 object-contain mb-2 self-center"
   />
-  
+
   {/* Text Below QR Code */}
-  <h1 className="text-md font-extrabold bg-gradient-to-r from-[#fbbd5c] to-[#d9a93a] bg-clip-text text-transparent text-center">
-    CHEE CHAN
-  </h1>
-  <p className="text-xs uppercase tracking-wider bg-gradient-to-r from-[#fbd55b] to-[#d8a93a] bg-clip-text text-transparent text-center">
-    Privilege Card
-  </p>
+  <div className="text-left text-[7px] leading-tight text-yellow-500">
+    <p className="font-bold mb-1">TERM & CONDITION</p>
+    <ul className="list-disc list-inside">
+      <li>Chee Chan Privilege Card valid 1 year from issued date.</li>
+      <li>
+        Card Holder need to show their Chee Chan Privilege Card every time at
+        Chee Chan Golf Resort for special Privilege.
+      </li>
+      <li>
+        Chee Chan Privilege Card and its benefits are non-transferable to any
+        other individual.
+      </li>
+      <li>
+        Chee Chan Golf Resort reserves the right to adjust prices or impose
+        additional restrictions at any time with or without notice.
+      </li>
+    </ul>
+  </div>
 </div>
+
+
+
             </>
           )}
              </div>
