@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import  { useState , useEffect } from "react";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 const exchangeDemos = () => {
@@ -10,7 +10,7 @@ const exchangeDemos = () => {
       • ออกแบบพิเศษเพื่อเพิ่มระยะทางและความแม่นยำ
       • น้ำหนักเบา ช่วยให้คุณเล่นได้อย่างสบายในทุกสถานการณ์
       • เหมาะสำหรับนักกอล์ฟทุกระดับ`,
-          colors: "3 สี (น้ำเงิน, แดง, และดำ)",
+          colors: "1 สี (น้ำเงิน)",
           point: 25000,
           image: "https://www.golfbestbuy.com/cdn/shop/articles/bFeatured_S7_Mens_Blue_and_Red_Sets_300x300.png?v=1685248500",
         },
@@ -21,7 +21,7 @@ const exchangeDemos = () => {
       • มีพื้นที่จัดเก็บเพียงพอสำหรับอุปกรณ์กอล์ฟครบชุด
       • วัสดุกันน้ำเพื่อการใช้งานที่ยาวนานและมั่นใจ
       • เหมาะสำหรับทั้งนักกอล์ฟมือใหม่และมือโปร`,
-          colors: "2 สี (ดำและขาว)",
+          colors: "1 สี (ดำ)",
           point: 10500,
           image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL1IyGeM3BUVLiTuxqDOesbxbV5MeAy0l32g&s",
         },
@@ -64,6 +64,9 @@ const exchangeDemos = () => {
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [showQRCode, setShowQRCode] = useState(false);
+  const [timer, setTimer] = useState(30); // ตั้งเวลา QR Code หมดอายุ (30 วินาที)
+  const [isQRCodeConfirmed, setIsQRCodeConfirmed] = useState(false);
 
   const handleSearch = (e) => {
     const query = e.target.value.toLowerCase();
@@ -82,18 +85,55 @@ const exchangeDemos = () => {
   const handleCloseModal = () => {
     setSelectedProduct(null);
     setShowModal(false);
+    setShowQRCode(false);
+    setTimer(30); // รีเซ็ตเวลา
+    setIsQRCodeConfirmed(false); // รีเซ็ตการยืนยัน QR Code
   };
 
-  const handleRedeem = (productId) => {
+  const handleRedeem = () => {
+    if (!isQRCodeConfirmed) {
+      Swal.fire({
+        title: "โปรดยืนยัน QR Code ก่อน!",
+        text: "คุณต้องกดยืนยัน QR Code เพื่อดำเนินการแลกสินค้า",
+        icon: "warning",
+        confirmButtonText: "ตกลง",
+      });
+      return;
+    }
+
     Swal.fire({
       title: "แลกสินค้าเรียบร้อย",
-      text: `คุณได้แลกสินค้า ID: ${productId}`,
+      text: `คุณได้แลกสินค้า "${selectedProduct.name}" สำเร็จ!`,
       icon: "success",
       timer: 2000,
       showConfirmButton: false,
+    }).then(() => {
+      handleCloseModal();
     });
-    handleCloseModal();
   };
+
+  const handleConfirmQRCode = () => {
+    setIsQRCodeConfirmed(true);
+    Swal.fire({
+      title: "QR Code ยืนยันสำเร็จ",
+      text: "คุณสามารถดำเนินการแลกสินค้าได้แล้ว",
+      icon: "success",
+      confirmButtonText: "ตกลง",
+    });
+  };
+
+  // ตั้งเวลานับถอยหลังสำหรับ QR Code
+  useEffect(() => {
+    if (showQRCode && timer > 0) {
+      const countdown = setTimeout(() => {
+        setTimer((prev) => prev - 1);
+      }, 1000);
+      return () => clearTimeout(countdown);
+    } else if (timer === 0) {
+      handleCloseModal(); // ปิด Modal เมื่อหมดเวลา
+    }
+  }, [showQRCode, timer]);
+
 
   return (
 <div className="min-h-screen p-6 bg-[#D3F1DF]">
@@ -139,7 +179,7 @@ const exchangeDemos = () => {
             className="flex-1 text-sm font-semibold text-[#5A6C57] py-2 mx-2 border border-[#85A98F] rounded-full bg-white shadow-xl hover:bg-[#85A98F] hover:text-white transition-transform transform hover:-translate-y-1"
             onClick={() => navigate("/prvcard")} // นำไปหน้า Prv Card
           >
-            Prv <br />
+            
             Card
           </button>
           <button
@@ -147,7 +187,7 @@ const exchangeDemos = () => {
             onClick={() => navigate("/exchangeDemo")} // นำไปหน้า Latest Items
           >
             Latest
-            <br /> Items
+           Items
           </button>
           <button
             className="flex-1 text-sm font-semibold text-[#5A6C57] py-2 mx-2 border border-[#85A98F] rounded-full bg-white shadow-xl hover:bg-[#85A98F] hover:text-white transition-transform transform hover:-translate-y-1"
@@ -195,63 +235,78 @@ const exchangeDemos = () => {
     </div>
   </div>
 
-  {/* Modal */}
-  {showModal && selectedProduct && (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-      <div className="bg-white rounded-lg p-6 w-11/12 sm:w-2/3 lg:w-1/3 relative">
-        {/* ปุ่มปิด */}
-        <button
-          onClick={handleCloseModal}
-          className="absolute top-2 right-2 text-[#5A6C57] hover:text-[#85A98F] transition"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-        <div className="flex flex-col items-center">
-          <img
-            src={selectedProduct.image}
-            alt={selectedProduct.name}
-            className="w-full h-48 object-cover rounded-md mb-4"
-          />
-          <h2 className="text-lg font-bold text-[#5A6C57]">
-            {selectedProduct.name}
-          </h2>
-          <p className="text-sm text-[#525B44] mt-2 whitespace-pre-line leading-6">
-            {selectedProduct.description}
-          </p>
-          <p className="text-sm text-[#525B44] mt-2">{selectedProduct.colors}</p>
-          <p className="text-md font-bold text-[#85A98F] mt-4 flex items-center">
-            {selectedProduct.point}
-            <span className="bg-[#fbbd5c] text-white font-bold text-xs px-2 py-1 rounded-full shadow">
-              P
-            </span>
-          </p>
+{/* Modal */}
+{showModal && selectedProduct && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white rounded-lg p-6 w-11/12 sm:w-2/3 lg:w-1/3 relative">
+            {/* ปุ่มปิด */}
+            <button
+              onClick={handleCloseModal}
+              className="absolute top-2 right-2 text-[#5A6C57]"
+            >
+              X
+            </button>
+            <div className="flex flex-col items-center">
+              <h2 className="text-lg font-bold text-[#5A6C57]">
+                {selectedProduct.name}
+              </h2>
+              <button
+                onClick={() => setShowQRCode(true)}
+                className="mt-6 px-4 py-2 bg-[#85A98F] text-white rounded-lg"
+              >
+                แสดง QR Code
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+{/* QR Code Modal */}
+{showQRCode && (
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div className="bg-white rounded-lg p-6 w-11/12 sm:w-2/3 lg:w-1/3 relative">
+      <h2 className="text-lg font-bold text-[#5A6C57] mb-4 ">QR Code</h2>
+
+      {/* Conditionally render QR Code image */}
+      {!isQRCodeConfirmed && (
+        <img
+          src="https://cheechangolf.com/wp-content/uploads/2020/01/M.png"
+          alt="QR Code"
+          className="w-32 h-32 mx-auto "
+        />
+      )}
+
+      {/* Timer message */}
+      {!isQRCodeConfirmed && (
+        <p className="text-center mt-4 text-red-500">
+          QR Code หมดอายุใน {timer} วินาที
+        </p>
+      )}
+
+      {/* Buttons */}
+      <div className="flex flex-col items-center gap-4 mt-6">
+        {!isQRCodeConfirmed && (
           <button
-            onClick={() => handleRedeem(selectedProduct.id)}
-            className="mt-6 px-4 py-2 bg-[#85A98F] text-white rounded-lg hover:bg-[#5A6C57] transition"
+            onClick={handleConfirmQRCode}
+            className="px-4 py-2 bg-[#5A6C57] text-white rounded-lg"
+          >
+            ยืนยัน QR Code
+          </button>
+        )}
+        {isQRCodeConfirmed && (
+          <button
+            onClick={handleRedeem}
+            className="px-4 py-2 bg-[#85A98F] text-white rounded-lg"
           >
             แลกสินค้า
           </button>
-        </div>
+        )}
       </div>
     </div>
-  )}
-</div>
+  </div>
+)}
 
-
-
+    </div>
   );
 };
 

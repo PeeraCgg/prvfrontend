@@ -78,7 +78,6 @@ const HistoryExchange = () => {
             className="flex-1 text-sm font-semibold text-[#5A6C57] py-2 mx-2 border border-[#85A98F] rounded-full bg-white shadow-xl hover:bg-[#85A98F] hover:text-white transition-transform transform hover:-translate-y-1"
             onClick={() => navigate("/prvcard")} // นำไปหน้า Prv Card
           >
-            Prv <br />
             Card
           </button>
           <button
@@ -86,7 +85,7 @@ const HistoryExchange = () => {
             onClick={() => navigate("/exchangeDemo")} // นำไปหน้า Latest Items
           >
             Latest
-            <br /> Items
+            Items
           </button>
           <button
             className="flex-1 text-sm font-semibold text-[#5A6C57] py-2 mx-2 border border-[#85A98F] rounded-full bg-white shadow-xl hover:bg-[#85A98F] hover:text-white transition-transform transform hover:-translate-y-1"

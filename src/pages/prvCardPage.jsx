@@ -229,28 +229,28 @@ const ProfilePage = () => {
 <div className="flex justify-center mt-4">
   <div
     onClick={toggleCard}
-    className={`relative w-8 h-8 border rounded-full shadow-inner flex items-center justify-center cursor-pointer transition-all duration-300 ${
+    className={`relative w-4 h-4 border rounded-full shadow-inner flex items-center justify-center cursor-pointer transition-all duration-300 ${
       isFront ? 'bg-gray-100 border-gray-300' : 'bg-blue-500 border-blue-700'
     }`}
   >
     {/* Slider Button */}
-    <div className="h-6 w-6 rounded-full bg-white shadow-md"></div>
+    <div className="h-2 w-2 rounded-full bg-white shadow-md"></div>
   </div>
 </div>
 
         {/* Terms and Conditions */}
-        <div className="mt-6 text-left">
-          <h3 className="text-lg font-semibold text-gray-800 border-b pb-2 mb-4">Terms & Conditions</h3>
+        <div className="-mt-1 text-left">
+          <h3 className="text-lg font-semibold text-gray-800 border-b pb-2 mb-4">My Profile</h3>
           <div className="text-sm text-gray-700 max-h-32 overflow-y-auto space-y-2 border border-gray-200 p-4 rounded-lg bg-[#F9F9F9] shadow-inner">
             <ul className="list-disc pl-5 space-y-2 text-gray-600">
-              <li>Chee Chan Privilege Card is valid for 1 year from the issued date.</li>
-              <li>Cardholder must show the Privilege Card to access benefits.</li>
-              <li>Benefits are non-transferable to any other individual.</li>
-              <li>The cardholder must present the card at the Chee Chan Golf Resort for privileges.</li>
+              <li>ชื่อสมาชิก : นางสาว สุดสวย สุดประกายแสง </li>
+              <li>ประเภท :  Sliver VIP</li>
+              <li>หมายเลขบัตร : 0001</li>
+              <li>เบอร์มือถือ : 092XXXXXX</li>
               <li>
-                Chee Chan Golf Resort reserves the right to adjust prices or impose additional restrictions.
+                ลงทะเบียน : 27 พฤศจิกายน  2567
               </li>
-              <li>Changes may be applied at any time with or without prior notice.</li>
+  
             </ul>
           </div>
         </div>
